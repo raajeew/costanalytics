@@ -1,0 +1,161 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; background-color: #F2F4F6; color:#414141;}
+a.link{color:#146BD2; cursor: pointer;}
+.strong{font-weight: bolder;}
+body,h1,h2,h3,h4,h5,h6,p,label,span,g,strong,th,td,tspan{font-family: 'Open Sans', sans-serif;}
+h6{margin: 0; padding: 0; font-size: 12px;}
+h2.title{font-size: 22px; font-weight:bolder; background: url("./assets/icons/polygon.svg") no-repeat left; padding: 10px 0 10px 40px;}
+h2.title .part{font-size: 22px; font-weight:normal;}
+
+header{padding: 0 10px; background: #ffffff; box-shadow: 0px 0px 6px #aaa;position: relative; font-size: 0.9rem;}
+
+header .usericon{
+    background: url("./assets/icons/user.svg") no-repeat center left;padding-left: 32px !important;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+header .notification{
+    background: url("./assets/icons/notification.svg") no-repeat center left;padding-left: 32px !important;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+/*calendar style*/
+.md-drppicker .calendar{
+    width: 322px !important;
+    max-width: 322px !important;
+}
+
+div.md-drppicker{
+    font-family: 'Open Sans', sans-serif !important;
+}
+.md-drppicker .ranges ul li button.active {
+    background-color:#414141 !important;
+    color: #fff;
+}
+.md-drppicker td.active, .md-drppicker td.active:hover {
+    background-color:#414141 !important;
+    border-color: transparent;
+    color: #fff;
+    border-radius: 0 !important;
+}
+.md-drppicker td.available, .md-drppicker td.available:hover {
+
+    border-radius: 0 !important;
+}
+.md-drppicker td.start-date {
+    border-radius: 0 !important;
+}
+.md-drppicker table {
+    border-spacing: 0 !important;
+}
+.md-drppicker td.in-range.available{
+    background-color: #d5eaf3;
+}
+.md-drppicker td{
+    padding:4px !important;
+}
+.md-drppicker.double {
+    width: 765px !important;
+}
+.md-drppicker.show-ranges{
+    top: 50px !important;
+    left: -525px !important;
+}
+.md-drppicker .buttons{clear: both;}
+.md-drppicker .btn.btn-default > svg{display: none;}
+/*calendar style ends*/
+.navbar-brand{display: flex;}
+.navbar-brand span{font-weight: bold;border-left: 1px solid #eee; padding-left: 16px; font-size: 0.9rem; letter-spacing: .28px; line-height: 52px;}
+.navbar-brand strong{width: 88px; display: inline-block; overflow: hidden; }
+.navbar{box-sizing: border-box; padding: 0 15px ;}
+.navbar-wrap {display:flex; max-width: 100%;}
+.navbar-wrap .col-left{width:70%;height: 50px;box-sizing: border-box; display: flex;}
+.navbar-wrap .col-right{width:30%;height: 50px;box-sizing: border-box;}
+.navbar-brand {font-size: 1.2rem; padding-right: 60px; margin-right: 0; line-height: 50px; text-decoration: none;  color: #222222;}
+.nav-item{font-size: 1rem; text-decoration: none; line-height: 50px; padding: 0 15px; border-top: 2px solid transparent; font-weight: normal; color: #222222;}
+.nav-item.active{border-top: 2px solid #c90303;}
+.notification-summary-wrap{display: flex; float: right; margin: 0; padding: 0; list-style: none;}
+.notification-summary-wrap li{height: 50px; padding: 0 10px;}
+.mainMenuWrap{display: flex; flex-direction: row; list-style: none; margin: 0; padding: 0;}
+.mainMenuWrap > li.menuItem > a{color:#111111; font-weight: bold;}
+.mainMenuWrap > li.menuItem{position: relative;border-top: 2px solid transparent; margin-right: 10px;}
+.mainMenuWrap > li.menuItem > a{padding: 14px 5px 0 0; height: 100%; box-sizing: border-box; display: flex;text-decoration: none;} 
+.mainMenuWrap > li.menuItem > a > label{display: inline-block; width: 22px;}
+.mainMenuWrap > li.menuItem.active{border-top:2px solid #cb2027 !important;}
+.mainMenuWrap > li.menuItem:hover{border-top-color: #fad1d1; cursor: pointer;}
+.child-menu{margin: 0; padding: 0; list-style: none; display: none; background: #ffffff; border:1px solid #d3d3d3; border-radius: 2px; position: absolute; z-index: 21; width: 190px;}
+.child-menu > li > a {position: relative;display: block; padding:8px 10px 8px 16px; cursor: pointer;  text-decoration: none; border-bottom: 1px solid #d3d3d3;}
+.hasChildMenu:hover > .child-menu{display: block;}
+.mainMenuWrap > li.menuItem.active > a,
+.child-menu > li.active > a{color:#cb2027 !important;}
+.mainMenuWrap>li.menuItem.active {
+    border-top: 2px solid #cb2027!important;
+}
+.mainMenuWrap a:hover{color:#128b8d !important;}
+li.menuItem.hasChildMenu > a span:after {content:'\005e'; font-size: 1em; font-weight: bold; font-family: "verdana";  display: inline-block; margin-left: 5px;};
+.child-menu > li.active > a::before{
+  content: "\2022";
+  font-size: 2em;
+  color: #cb2027;
+  position: absolute;
+  left: 5px;
+  top: 0%;
+}
+
+
+
+
+
+footer{height: 40px; padding: 0 20px; background-color: #ffffff; box-shadow: 0px -3px 5px #cccccc;line-height: 3rem; font-size: 0.8rem;}
+.main{min-height: calc(100% - 110px);  margin: 0; padding: 0 20px;}
+
+footer .footer-content {
+    line-height: 2;
+    height: 40px;
+    box-sizing: border-box;
+    color: #313131;
+    display: flex;
+}
+footer .footer-content>label {
+    width: 50%;
+    padding: 5px 10px 0;
+    box-sizing: border-box;
+}
+ /* To remove the underline ripple */
+ #common-filter-wrap .mat-form-field-underline {
+    background-color: transparent !important;
+    display: none !important;
+}
+#common-filter-wrap .mat-form-field-appearance-legacy .mat-form-field-wrapper{
+    padding-bottom: 0px !important;
+}
+
+.mat-sort-header-container {
+    font-size: 14px;
+    font-weight: bold;
+    color: #414141;
+}
+.mat-menu-panel{font-size: 12px;}
+.filter-input .mat-chip-list-wrapper{
+    background:#E6EDF4 url("assets/icons/filters.svg") no-repeat left;
+    height: 40px;
+    padding-left: 30px;
+}
+
+.filter-input .mat-form-field-appearance-legacy .mat-form-field-label{
+    padding-left: 30px;
+    padding-top: 8px;
+}
+.filter-input .mat-form-field-appearance-legacy .mat-form-field-label.filterhasvalue{
+    transform: translateY(-1.4em) scale(.75) perspective(100px) translateZ(.001px) !important; 
+}
+.filter-input .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label.filterhasvalue,
+.filter-input .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.4em) scale(.75) perspective(100px) translateZ(.001px);
+    width: 133.33333%;
+}
+.filter-input .mat-form-field-appearance-legacy .mat-form-field-infix{
+    margin-top: -16px;
+}
