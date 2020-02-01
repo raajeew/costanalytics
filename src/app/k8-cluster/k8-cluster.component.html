@@ -22,6 +22,7 @@
               <input
                 placeholder="Filter"
                 #filterInput
+                #automcompleteTrigger="matAutocompleteTrigger"
                 [formControl]="filterCtrl"
                 [matAutocomplete]="auto"
                 [matChipInputFor]="chipList"

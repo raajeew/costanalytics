@@ -45,7 +45,7 @@ export class K8ClusterComponent implements OnInit {
   
   @ViewChild('filterInput', {static: false}) filterInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;
-  
+  @ViewChild('automcompleteTrigger',{static: false}) automcompleteTrigger;
   
   
   constructor() {
@@ -124,6 +124,7 @@ export class K8ClusterComponent implements OnInit {
       this.filterCtrl.setValue(null);
       this.allFilters= this.filterMasterData[selectedKey];
       this.setFilterData();
+      setTimeout(()=> {this.automcompleteTrigger.openPanel() })
     }
     
   }
