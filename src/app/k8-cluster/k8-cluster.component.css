@@ -195,6 +195,7 @@ span.trend.down{
     height: 32px;
 }
 .stacked-bar{
+    border:1px solid transparent;
     display: inline-block;
     height: 20px;
     width: 20px;
@@ -203,6 +204,7 @@ span.trend.down{
     background: url('../../assets/icons/barchartstacked.svg') no-repeat;
 }
 .bar-chart{
+    border:1px solid transparent;
     display: inline-block;
     height: 20px;
     width: 20px;
@@ -211,6 +213,7 @@ span.trend.down{
     background: url('../../assets/icons/barchart.svg') no-repeat;
 }
 .line-chart{
+    border:1px solid transparent;
     display: inline-block;
     height: 20px;
     width: 20px;

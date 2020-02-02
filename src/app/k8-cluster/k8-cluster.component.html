@@ -168,14 +168,14 @@
               </select>
             </div>
 
-            <div>
-              <span class="stacked-bar chartActive"></span>
+            <div class="chartTypeWrap">
+              <span (click)="loadChart('bar',true)" class="ctype stacked-bar chartActive"></span>
             </div>
             <div>
-              <span class="bar-chart"></span>
+              <span (click)="loadChart('bar',false)" class="ctype bar-chart"></span>
             </div>
             <div>
-              <span class="line-chart"></span>
+              <span (click)="loadChart('line',false)" class="ctype line-chart"></span>
             </div>
         </div>
     </div>
@@ -192,7 +192,7 @@
             [plugins]="barChartPlugins"
             [legend]="barChartLegend"
             [colors]="barChartColors"
-            [chartType]="barChartType">
+            [chartType]="chartType">
         </canvas>
     </div>
 </div>

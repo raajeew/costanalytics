@@ -64,9 +64,10 @@ export class K8ClusterComponent implements OnInit {
   
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
+
   ngOnInit(){
-    this.barChartType = this.chartType;
     this.dataSource.sort = this.sort;
+    this.loadChart('bar',true);
   }
   add(event: MatChipInputEvent): void {
     // Add filter only when MatAutocomplete is not open
@@ -157,48 +158,8 @@ export class K8ClusterComponent implements OnInit {
     { backgroundColor: '#18C38A' },
     { backgroundColor: '#1F78B4' }
   ]
-  public barChartOptions: ChartOptions =  {
-    title: {
-      display: false,
-      position: 'bottom',
-      text: 'Chart.js Bar Chart - Stacked'
-    },
-    legend:{
-      position: 'bottom',
-      labels:{
-        boxWidth:12
-      }
-    },
-    tooltips: {
-      mode: 'index',
-      intersect: false
-    },
-    responsive: true,
-    maintainAspectRatio:false,
-    scales: {
-      xAxes: [{
-        stacked: true,
-        ticks: {
-          beginAtZero:true
-        },
-        gridLines : {
-          display : false
-        }
-      }],
-      yAxes: [{
-        stacked: true,
-        gridLines: {
-          drawBorder: false,
-        },
-        scaleLabel: {
-          display: true,
-          labelString: 'Cost'
-        }
-      }]
-    }
-  };
+  public barChartOptions: ChartOptions = {};
   public barChartLabels: Label[] = ['Jan', 'Feb', 'Mar', 'Apr', 'Jun', 'Jul', 'Aug','Sep','Oct','Nov','Dec'];
-  public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [];
 
@@ -210,7 +171,55 @@ export class K8ClusterComponent implements OnInit {
     { data: [28, 48, 40, 19, 86, 27, 90, 40, 19, 86, 27, 90], label: 'Namespace 5' },
     { data: [10, 38, 20, 9, 96, 37, 60, 80, 19, 86, 87, 20], label: 'Others' }
   ];
-
+  
+  loadChart(type, isStacked){
+    //$(".chartTypeWrap > span").removeClass('chartActive');
+    $('.ctype').click(function() {
+      $('.ctype').removeClass('chartActive')
+      $(this).addClass('chartActive')
+    });
+    this.chartType = type;
+    this.barChartOptions={
+      title: {
+        display: false,
+        position: 'bottom',
+        text: 'Chart.js Bar Chart - Stacked'
+      },
+      legend:{
+        position: 'bottom',
+        labels:{
+          boxWidth:12
+        }
+      },
+      tooltips: {
+        mode: 'index',
+        intersect: false
+      },
+      responsive: true,
+      maintainAspectRatio:false,
+      scales: {
+        xAxes: [{
+          stacked: isStacked,
+          ticks: {
+            beginAtZero:true
+          },
+          gridLines : {
+            display : false
+          }
+        }],
+        yAxes: [{
+          stacked: isStacked,
+          gridLines: {
+            drawBorder: false,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Cost'
+          }
+        }]
+      }
+    };
+  }
 
   //table gribd
   
