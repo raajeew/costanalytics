@@ -77,6 +77,7 @@ export class K8ClusterComponent implements OnInit {
     }
 
   setFilterData(){
+
     this.filteredFilter = this.filterCtrl.valueChanges.pipe(
       startWith(null),
       map((filter: string | null) => filter ? this._filter(filter) : this.allFilters.slice()));
@@ -122,8 +123,6 @@ export class K8ClusterComponent implements OnInit {
     if (index >= 0) {
       this.currentFilters.splice(index, 1);
     }
-
-    //
     let allFilters = Object.keys(this.filterPayload);
     allFilters.forEach((item,index)=>{
       this.filterPayload[item] = this.arrayRemove(this.filterPayload[item],filter);
@@ -131,8 +130,6 @@ export class K8ClusterComponent implements OnInit {
         delete this.filterPayload[item]
       }
     });
-    //
-
   }
 
  arrayRemove(arr, value) {
@@ -146,6 +143,7 @@ export class K8ClusterComponent implements OnInit {
     let selectedKey="";
     if(this.curKey){
       this.currentFilters.push(event.option.viewValue);
+      this.currentFilters = Array.from(new Set(this.currentFilters));
       if(this.filterPayload.hasOwnProperty(this.curKey.split(':')[0])){
         this.filterPayload[this.curKey.split(':')[0]].push(event.option.viewValue);
         this.filterPayload[this.curKey.split(':')[0]] = Array.from(new Set(this.filterPayload[this.curKey.split(':')[0]]));
