@@ -118,29 +118,12 @@ export class K8ClusterComponent implements OnInit {
 
   remove(filter: string): void {
     const index = this.currentFilters.indexOf(filter);
-    console.log(filter);
+    console.log(this.currentFilters);
     if (index >= 0) {
       this.currentFilters.splice(index, 1);
     }
-
-    //
-    let allFilters = Object.keys(this.filterPayload);
-    allFilters.forEach((item,index)=>{
-      this.filterPayload[item] = this.arrayRemove(this.filterPayload[item],filter);
-      if(this.filterPayload[item].length < 1){
-        delete this.filterPayload[item]
-      }
-    });
-    //
-
   }
 
- arrayRemove(arr, value) {
-   return arr.filter(function(ele){
-       return ele != value;
-   });
- }
- 
   curKey:any="";
   selected(event: MatAutocompleteSelectedEvent): void {
     let selectedKey="";
@@ -149,8 +132,6 @@ export class K8ClusterComponent implements OnInit {
       if(this.filterPayload.hasOwnProperty(this.curKey.split(':')[0])){
         this.filterPayload[this.curKey.split(':')[0]].push(event.option.viewValue);
         this.filterPayload[this.curKey.split(':')[0]] = Array.from(new Set(this.filterPayload[this.curKey.split(':')[0]]));
-        //
-        console.log(this.curKey.split(':')[0]);
       }
       console.log(this.filterPayload);
       this.curKey=''; 
