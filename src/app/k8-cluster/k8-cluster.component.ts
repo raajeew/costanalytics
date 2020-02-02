@@ -72,6 +72,9 @@ export class K8ClusterComponent implements OnInit {
       $(".groupItems > li").removeClass("active");
       $(this).addClass("active");
     });
+    $(".fit2screen").click(function(){
+      $("#chartwrap").toggle();
+    });
   }
   add(event: MatChipInputEvent): void {
     // Add filter only when MatAutocomplete is not open
