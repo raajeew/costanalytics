@@ -68,6 +68,10 @@ export class K8ClusterComponent implements OnInit {
   ngOnInit(){
     this.dataSource.sort = this.sort;
     this.loadChart('bar',true);
+    $(".groupItems > li").click(function(){
+      $(".groupItems > li").removeClass("active");
+      $(this).addClass("active");
+    });
   }
   add(event: MatChipInputEvent): void {
     // Add filter only when MatAutocomplete is not open
@@ -173,7 +177,6 @@ export class K8ClusterComponent implements OnInit {
   ];
   
   loadChart(type, isStacked){
-    //$(".chartTypeWrap > span").removeClass('chartActive');
     $('.ctype').click(function() {
       $('.ctype').removeClass('chartActive')
       $(this).addClass('chartActive')
