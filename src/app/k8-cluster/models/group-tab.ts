@@ -1,17 +1,17 @@
 export interface Priority1 {
-    id: string;
+    key: string;
     title: string;
     count: number;
 }
 
 export interface Priority2 {
-    id: string;
+    key: string;
     title: string;
     count: number;
 }
 
 export interface Priority3 {
-    id: string;
+    key: string;
     title: string;
     count: number;
 }

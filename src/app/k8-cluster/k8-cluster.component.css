@@ -62,6 +62,34 @@
     border-top: 2px solid #E53935;
     background-color: #E6EDF4;
 }
+.moreGroup{
+    display: flex; 
+    margin: 10px; 
+    cursor: pointer;
+    color: #146BD2;
+}
+.moreGroup h6{
+    padding-top: 3px;
+}
+
+.secMenuOuterWrap{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.secMenuOuterWrap li{
+    cursor: pointer;
+}
+.secMenuOuterWrap li span{
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    box-sizing: border-box;
+    padding: 5px;
+}
+.secMenuOuterWrap li:hover{
+    background-color: #E6EDF4;
+}
 #groupbywrap .col-a ul li p{
     font-size: 18px;
     padding: 8px 0 0 0;
@@ -92,8 +120,8 @@
 
 #gridwrap{
     min-height: 200px;
-    margin-top: 20px;
     margin-bottom: 20px;
+    border-top: 1px solid #efefef;
 }
 table {
     width: 100%;
@@ -149,6 +177,8 @@ span.trend.down{
 #grid-actions-wrap{
     padding: 15px 0 0;
     text-align: right;
+    background: #fff;
+    border-top: 1px solid #F2F4F6;
 }
 .grid-actions{
     display: inline-block;

@@ -1,0 +1,11 @@
+<div *ngIf="chartData" style="position: relative; height:90px; width: 100%; box-sizing: border-box;">
+    <canvas baseChart 
+        [datasets]="chartData"
+        [labels]="chartLabels"
+        [options]="chartOptions"
+        [plugins]="chartPlugins"
+        [legend]="chartLegend"
+        [chartType]="chartType">
+    </canvas>
+</div>
+<div style="text-align: right;"><a class="link" style="font-size: 11px;" (click)="navigate('optimize')">More Savings</a></div>

@@ -1,8 +1,8 @@
-<h2 class="title">Costs Insights <span class="part">/ Provider (3)</span></h2>
+<h2 class="title">Cost Insights <span class="part">/ Provider (3)</span></h2>
 
-<span style="position: absolute; top: 110px; left: 50px; font-family: 'Courier New', Courier, monospace; background-color: antiquewhite;">
+<!-- <span style="position: absolute; top: 110px; left: 50px; font-family: 'Courier New', Courier, monospace; background-color: antiquewhite;">
   {{filterPayload | json}}
-</span>
+</span> -->
 
 <!-- Top Filter markup starts here-->
 <div id="common-filter-wrap">
@@ -14,6 +14,7 @@
                 *ngFor="let filter of currentFilters"
                 [selectable]="selectable"
                 [removable]="removable"
+                (change)="filterChange($event)"
                 (removed)="remove(filter)">
                 {{filter}}
                 <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
@@ -39,16 +40,17 @@
     </div>
     <div class="calendar">
         <input id="calendarinput" placeholder="Select date" type="text" matInput ngxDaterangepickerMd
-        [locale]="{applyLabel: 'ok', format: 'DD-MM-YYYY'}"
+        [locale]="{applyLabel: 'Apply',clearLabel: 'Cancel', format: 'DD/MM/YYYY', separator: ' to '}"
         startKey="start"
         endKey="end"
         [showCustomRangeLabel]="true"
         [alwaysShowCalendars]="true"
         [(ngModel)]="selectedDate"
         [ranges]="ranges"
-        [linkedCalendars]="true"
-        [showClearButton]="true"
-        name="daterange"/>
+        [showCancel]="true"
+        [showRangeLabelOnInput]="true"
+        name="daterange"
+        (change)="onDateRangeChanged($event)"/>
     </div>
 </div>
 
@@ -56,145 +58,112 @@
 
 <!-- Smart insights widget starts here -->
 <div id="smart-insights" class="mat-elevation-z0">
-    <ul class="siwidgetwrap">
-        <li>
-            <div class="si-wrap">
-               <h6>Total Cost</h6>
-               <ul>
-                 <li class="left">
-                   <strong>$14,531</strong>
-                 </li>
-                 <li class="right">
-                   <span class="trend down">28%</span>
-                   <label>Over last month</label>
-                 </li>
-               </ul>
-            </div>
-        </li>
-        <li>
-          <div class="si-wrap">
-             <h6>Possible Savings</h6>
-             <ul>
-               <li class="left">
-                 <strong>$10,263</strong>
-               </li>
-               <li class="right">
-                 <span class="trend up">28%</span>
-                 <label>Over last month</label>
-               </li>
-             </ul>
-          </div>
-        </li>
-        <li>
-          <div class="si-wrap">             
-             <ul>
-               <li class="left">
-                <h6>Spend</h6>
-                 <strong>$14,531</strong>
-               </li>
-               <li style="width: 48px; display: flex; align-items: center; color: #4E7599;">vs</li>
-               <li class="right">
-                <h6>Budgeted</h6>
-                <strong>$14,531</strong>
-               </li>
-             </ul>
-          </div>
-        </li>
-        
-        <li>
-          <div class="si-wrap">
-             <h6>Forecast Cost</h6>
-             <ul>
-               <li class="left">
-                 <strong>$18,121</strong>
-               </li>
-               <li class="right">
-                 <span class="trend down">28%</span>
-                 <label>Over last month</label>
-               </li>
-             </ul>
-          </div>
+  <ul class="siwidgetwrap">
+    <!-- <li *ngFor="let item of snapShots">
+      <ng-container *ngComponentOutlet="item.component;"></ng-container>
+    </li> -->
+    <ng-container *ngFor="let item of snapShots">
+      <li [ngSwitch]="item.viewType">
+        <!-- trend template -->
+        <div class="si-wrap" *ngSwitchCase="'trend'">
+          <h6>{{item.values.title}}</h6>
+          <ul>
+            <li class="left">
+              <strong>${{item.values.cost | number}}</strong>
+            </li>
+            <li class="right">
+              <span class="trend" [ngClass]="(item.values.deltaCost>0)?'down':'up'">{{item.values.deltaCost | percent}}</span>
+              <label>{{item.values.comment}}</label>
+            </li>
+          </ul>
+        </div>
+        <!-- comparison template -->
+        <div class="si-wrap" *ngSwitchCase="'comparison'">
+          <ul>
+            <li class="left">
+              <h6>{{item.values.parties[0].title}}</h6>
+              <strong>${{item.values.parties[0].cost | number}}</strong>
+            </li>
+            <li
+              style="width: 48px; display: flex; align-items: center; color: #4E7599;"
+            >
+              vs
+            </li>
+            <li class="right">
+              <h6>{{item.values.parties[1].title}}</h6>
+              <strong>${{item.values.parties[1].cost | number}}</strong>
+            </li>
+          </ul>
+        </div>
       </li>
-    </ul>
+    </ng-container>
+    
+  </ul>
 </div>
 <!-- Smart insights widget ends here -->
 
 <!-- Grouping and charts starts here -->
 <div id="groupbywrap" class="mat-elevation-z0">
-    <div class="col-a">
-        <ul class="groupItems">
-            <li class="active">
-              <h6>Namespace</h6>
-              <p>12</p>
-            </li>
-            <li>
-              <h6>Cluster</h6>
-              <p>4</p>
-            </li>
-            <li>
-              <h6>Service</h6>
-              <p>30</p>
-            </li>
-            <li>
-              <h6>Provider</h6>
-              <p>3</p>
-            </li>
-            <li>
-              <h6>Team</h6>
-              <p>9</p>
-            </li>
-            <li>
-              <h6>Lease Type</h6>
-              <p>3</p>
-            </li>
-            <li>
-              <h6>Usage Family</h6>
-              <p>5</p>
-            </li>
-            <li>
-              <h6>
-                <a class="link">More</a>
-              </h6>
-            </li>
-        </ul>
-    </div>
-    <div class="col-b">
-        <div class="chart-actions-wrap">
-            <div>
-              <select id="chart-data-filter">
-                <option>Daily</option>
-                <option>Monthly</option>
-                <option>Yearly</option>
-              </select>
-            </div>
+  <div class="col-a">
+    <ul *ngIf="groupTabs">
+      <li (click)="onTabSelected(item)"
+        *ngFor="let item of groupTabs.priority1; let i = index"
+        [ngClass]="{active: item.key == selectedGroupTab}">
+        <h6>{{ item.title }}</h6>
+        <p>{{ item.count }}</p>
+      </li>
 
-            <div class="chartTypeWrap">
-              <span (click)="loadChart('bar',true)" class="ctype stacked-bar chartActive"></span>
-            </div>
-            <div>
-              <span (click)="loadChart('bar',false)" class="ctype bar-chart"></span>
-            </div>
-            <div>
-              <span (click)="loadChart('line',false)" class="ctype line-chart"></span>
-            </div>
-        </div>
+      <a class="moreGroup" *ngIf="groupTabs.priority2.length>0" [matMenuTriggerFor]="MoreMenu">
+        <h6>More</h6> 
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </a>
+      <mat-menu id="more-menu-panel" #MoreMenu="matMenu">
+        <ul class="secMenuOuterWrap">
+          <li *ngFor="let item of groupTabs.priority2">
+            <span (click)="onSecondaryTabSelected(item)">{{item.title}}</span>
+          </li>
+        </ul>
+      </mat-menu>
+    </ul>
+  </div>
+  <div class="col-b">
+    <div class="chart-actions-wrap">
+      <div>
+        <select id="chart-data-filter" (change)="onGranularityChanged($event)">
+          <option value="hourly">Hourly</option>
+          <option value="daily">Daily</option>
+          <option value="monthly">Monthly</option>
+          <option value="yearly">Yearly</option>
+        </select>
+      </div>
+
+      <div class="chartTypeWrap">
+        <span (click)="loadChart('bar',true)" class="ctype stacked-bar chartActive"></span>
+      </div>
+      <div>
+        <span (click)="loadChart('bar',false)" class="ctype bar-chart"></span>
+      </div>
+      <div>
+        <span (click)="loadChart('line',false)" class="ctype line-chart"></span>
+      </div>
     </div>
+  </div>
 </div>
 <!-- Grouping and charts ends here -->
 
 <!-- chart wrap starts here -->
 <div id="chartwrap" class="mat-elevation-z0">
-    <div style="position: relative; height:350px; width:100%">
-        <canvas baseChart 
-            [datasets]="barChartData"
-            [labels]="barChartLabels"
-            [options]="barChartOptions"
-            [plugins]="barChartPlugins"
-            [legend]="barChartLegend"
-            [colors]="barChartColors"
-            [chartType]="chartType">
-        </canvas>
-    </div>
+  <div *ngIf="barChartData" style="position: relative; height:350px; width:100%">
+      <canvas baseChart 
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [colors]="barChartColors"
+          [chartType]="chartType">
+      </canvas>
+  </div>
 </div>
 <!-- chart wrap starts here -->
 <!--grid actions starts-->
@@ -208,59 +177,29 @@
 <!--grid actions ends-->
 <!-- Data grid starts here -->
 <div id="gridwrap">
-    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z0">
-
-        <ng-container matColumnDef="clusterId">
-          <th mat-header-cell  *matHeaderCellDef mat-sort-header> Cluster ID </th>
-          <td mat-cell *matCellDef="let element"> <a class="strong link">{{element.clusterId}}</a> </td>
-        </ng-container>
-      
-
-        <ng-container matColumnDef="memCost">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Mem Cost </th>
-          <td mat-cell *matCellDef="let element"> ${{element.memCost}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="cpuCost">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> CPU Cost </th>
-          <td mat-cell *matCellDef="let element"> ${{element.cpuCost}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="networkCost">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Network Cost </th>
-          <td mat-cell *matCellDef="let element"> ${{element.networkCost}} </td>
-        </ng-container>
-      
-       <ng-container matColumnDef="storageCost">
-          <th mat-header-cell *matHeaderCellDef  mat-sort-header> Storage Cost </th>
-          <td mat-cell *matCellDef="let element"> ${{element.storageCost}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="gpuCost">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> GPU Cost </th>
-          <td mat-cell *matCellDef="let element"> ${{element.gpuCost}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="otherCost">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Other Cost </th>
-          <td mat-cell *matCellDef="let element"> ${{element.otherCost}} </td>
-        </ng-container>
-        
-        <ng-container matColumnDef="totalCost">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Cost </th>
-          <td mat-cell *matCellDef="let element"> ${{element.totalCost}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="possibleSavings">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Possible Savings </th>
-          <td mat-cell *matCellDef="let element" width="160px"> 
-            <a class="strong link">${{element.possibleSavings}}</a> 
-            <span class="trend up">{{element.trend}}%</span>
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z0">
+    <ng-container matColumnDef="{{col.key}}" *ngFor="let col of columns">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{col.title}}</th>
+      <ng-container [ngSwitch]="col.key">
+        <ng-container *ngSwitchCase="'clusterId'">
+          <td mat-cell *matCellDef="let element">
+            <a class="strong link">{{ element.clusterId }}</a>
           </td>
         </ng-container>
-      
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+        <ng-container *ngSwitchCase="'possibleSavings'">
+          <td mat-cell *matCellDef="let element" width="160px">
+            <a class="strong link">${{ element.possibleSavings }}</a>
+            <span class="trend up">{{ element.trend }}%</span>
+          </td>
+        </ng-container>
+        <ng-container *ngSwitchDefault >
+          <td mat-cell *matCellDef="let element">${{ element[col.key] }}</td>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 </div>
 <!-- Data grid ends here -->
+<mat-spinner diameter='50' *ngIf="showLoading" class="loadingGif"></mat-spinner>

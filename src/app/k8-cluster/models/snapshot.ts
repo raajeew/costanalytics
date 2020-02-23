@@ -17,4 +17,5 @@ export class Snapshot {
     id: string;
     viewType: string;
     values: Trend|Comparison;
+    component?: any;
 }

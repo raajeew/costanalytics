@@ -1,0 +1,74 @@
+.mat-spinner.loadingGif{position: absolute !important;}
+.pi-chart-wrap{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+.pi-chart-wrap li{
+    position: relative;
+    width: 45%;
+    min-height: 225px;
+    box-sizing: border-box;
+}
+.pi-chart-wrap .gc-wrapper{position: relative; width: 350px; min-height: 200px;}
+.pi-chart-wrap li:first-child{
+    width: 55%;
+}
+#labelOverlay {
+    width: auto;
+    position: absolute;
+    top: calc(50% - 45px);
+    left: 15%;
+    text-align: center;
+    cursor: default;
+}
+
+#labelOverlay p {
+  line-height: 1;
+  padding:0;
+  margin: 8px 0;
+}
+
+#labelOverlay p.cost-title{
+  font-size: 14px;
+  color: #999999;
+}
+
+#labelOverlay p.total-cost {
+  font-size: 16pt;
+}
+#labelOverlay p.time-period {
+    font-size: 12px;
+    color: #cccccc;
+  }
+  table {
+    width: 100%;
+  }
+.chart-grid-table table th{
+    font-size: 12px;
+    font-weight: bold;
+    text-align: right;
+}
+.cost-column{
+    text-align: right;
+}
+.chart-grid-table tr.mat-header-row {
+    height: 36px;
+}
+.chart-grid-table tr.mat-footer-row, 
+.chart-grid-table tr.mat-row{
+    height: 40px;
+}
+.chart-grid-table tr.mat-row td:first-child{position: relative;}
+.chart-grid-table .mat-sort-header-container{float: right !important;}
+.legendIcon{
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  position: absolute;
+  left: 3px;
+  top: 14px
+}

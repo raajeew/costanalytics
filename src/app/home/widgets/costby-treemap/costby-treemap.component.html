@@ -1,0 +1,30 @@
+<div class="db-widget">
+    <div class="card-header">
+        <div class="col-left">
+            <h5 class="title">Cost By</h5>   
+            <span class="date-range">(Month to Date)</span>                     
+        </div>
+        <div class="col-right">
+            <select (change)="filterCard($event.target.value)">
+                <option *ngFor="let filter of filters" value={{filter}}>
+                    {{filter}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="card-content">
+        <a *ngIf="backButton" class="treemapback" (click)="treeMapBack()">&laquo; Back</a>
+        <google-chart #treeMapChart style="width: 100%;"
+            [title]="title"
+            [type]="type"
+            [data]="data"
+            [columnNames]="columnNames"
+            [options]="options"
+            (select)="selectEvent($event)">
+        </google-chart>
+    </div>
+    <div class="card-footer">
+        <a class="link" (click)="navigate('provider')">View Details</a>
+    </div>
+    <mat-spinner diameter='50' *ngIf="showLoading" class="loadingGif"></mat-spinner>
+</div>

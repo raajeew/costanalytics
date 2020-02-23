@@ -1,16 +1,54 @@
 <nav class="navbar navbar-default">
     <div class="navbar-wrap">
       <div class="col-left navbar-header">
-        <!-- <a class="menuIcon" (click)="showMenuIcon = !showMenuIcon">
-          <i class="material-icons">menu</i>
-        </a> -->
+        <a class="app-switcher-icon" [matMenuTriggerFor]="appMenu">
+          <svg id="AppSwitcher_icon" data-name="AppSwitcher icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+            <rect id="Rectangle_1005" data-name="Rectangle 1005" width="32" height="32" fill="none"/>
+            <rect id="Rectangle_1219" data-name="Rectangle 1219" width="4" height="4" transform="translate(8 8)" fill="#414141"/>
+            <rect id="Rectangle_3040" data-name="Rectangle 3040" width="4" height="4" transform="translate(8 14)" fill="#414141"/>
+            <rect id="Rectangle_3043" data-name="Rectangle 3043" width="4" height="4" transform="translate(8 20)" fill="#414141"/>
+            <rect id="Rectangle_3036" data-name="Rectangle 3036" width="4" height="4" transform="translate(14 8)" fill="#414141"/>
+            <rect id="Rectangle_3039" data-name="Rectangle 3039" width="4" height="4" transform="translate(14 14)" fill="#414141"/>
+            <rect id="Rectangle_3042" data-name="Rectangle 3042" width="4" height="4" transform="translate(14 20)" fill="#414141"/>
+            <rect id="Rectangle_3037" data-name="Rectangle 3037" width="4" height="4" transform="translate(20 8)" fill="#414141"/>
+            <rect id="Rectangle_3038" data-name="Rectangle 3038" width="4" height="4" transform="translate(20 14)" fill="#414141"/>
+            <rect id="Rectangle_3041" data-name="Rectangle 3041" width="4" height="4" transform="translate(20 20)" fill="#414141"/>
+          </svg>          
+        </a>
+        <mat-menu #appMenu="matMenu" class="applicationsMenu">
+          <div class="appMenuWrap">
+            <h6>Apps</h6>
+            <ul>
+              <li>
+                <a class="active">Dosastsu</a>
+              </li>
+              <li>
+                <a href="https://demo-aiops.labgsd.com" target="_blank">AIOps</a>
+              </li>
+              <li>
+                <a>Orbit</a>
+              </li>
+              <li>
+                <a>Graphana</a>
+              </li>
+            </ul>
+          </div>
+        </mat-menu>
         <a class="navbar-brand"  [routerLink]="['/home']">
           <strong>
-            COSTA
+            <svg id="logo_complete_Hitachi" data-name="logo complete Hitachi" xmlns="http://www.w3.org/2000/svg" width="72" height="11.889" viewBox="0 0 72 11.889">
+              <path id="Path_19" data-name="Path 19" d="M1187.732,15.7v4.491h5.949V15.7h2.932V27.06h-2.932v-5.02h-5.949v5.02H1184.8V15.7Z" transform="translate(-1129.873 -15.524)"/>
+              <path id="Path_20" data-name="Path 20" d="M1154,15.7v1.937h-4.484V27.06h-2.931V17.637H1142.1V15.7Z" transform="translate(-1123.992 -15.524)"/>
+              <path id="Path_21" data-name="Path 21" d="M1166.869,27.06h-3.277l-.948-2.466h-5.519l-.948,2.466H1152.9l5.174-11.36h3.621Zm-6.9-9.423-2.07,5.108h4.053l-1.983-5.108" transform="translate(-1125.479 -15.524)"/>
+              <rect id="Rectangle_38" data-name="Rectangle 38" width="2.932" height="11.36" transform="translate(69.068 0.176)"/>
+              <path id="Path_22" data-name="Path 22" d="M1124.032,15.7v4.491h5.95V15.7h2.932V27.06h-2.932v-5.02h-5.95v5.02H1121.1V15.7Z" transform="translate(-1121.1 -15.524)"/>
+              <rect id="Rectangle_39" data-name="Rectangle 39" width="2.932" height="11.36" transform="translate(14.141 0.176)"/>
+              <path id="Path_23" data-name="Path 23" d="M1168.931,23.866a7.7,7.7,0,0,1-.431-2.378,5.887,5.887,0,0,1,.776-3.258,4.91,4.91,0,0,1,2.5-2.114,9.866,9.866,0,0,1,3.277-.616,8.771,8.771,0,0,1,3.708.793,3.433,3.433,0,0,1,2.069,2.642,1.976,1.976,0,0,1,.086.7h-3.1a3.185,3.185,0,0,0-.172-.881,2.288,2.288,0,0,0-1.38-1.321,6.519,6.519,0,0,0-1.293-.176,3.953,3.953,0,0,0-1.466.264,2.611,2.611,0,0,0-1.638,1.673,7.25,7.25,0,0,0-.431,2.378,8.166,8.166,0,0,0,.258,2.026,2.751,2.751,0,0,0,1.639,1.761,4.792,4.792,0,0,0,1.552.264,7.4,7.4,0,0,0,1.38-.176,2.112,2.112,0,0,0,1.293-1.145,2.863,2.863,0,0,0,.259-1.233h3.1a4.521,4.521,0,0,1-.172,1.057,3.5,3.5,0,0,1-2.07,2.466,8.883,8.883,0,0,1-3.794.793,11.369,11.369,0,0,1-3.018-.44A5.96,5.96,0,0,1,1168.931,23.866Z" transform="translate(-1127.628 -15.5)"/>
+            </svg>
           </strong>
-          <span>LoremEpsum</span>
+          <span>Dosatsu</span>
         </a>
-
+        
         <ul class="mainMenuWrap">
           <li class="menuItem" routerLinkActive="active">
             <a [routerLink]="['/home']">Dashboard</a>
@@ -30,7 +68,13 @@
               </ul>
           </li>
           <li class="menuItem" routerLinkActive="active">
+            <a [routerLink]="['/budget']">Budget</a>
+          </li>
+          <li class="menuItem" routerLinkActive="active">
             <a [routerLink]="['/reports']">Reports</a>
+          </li>
+          <li class="menuItem" routerLinkActive="active">
+            <a [routerLink]="['/optimize']">Optimize</a>
           </li>
         </ul>
       </div>

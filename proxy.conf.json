@@ -1,0 +1,18 @@
+{
+  "/mcapi": {
+    "target": "http://localhost:4040/mcapi",
+    "secure": false,
+    "pathRewrite": {
+      "^/mcapi": ""
+    },
+    "changeOrigin": false
+  },
+  "/api": {
+    "target": "http://localhost:4040/api",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": false
+  }
+}

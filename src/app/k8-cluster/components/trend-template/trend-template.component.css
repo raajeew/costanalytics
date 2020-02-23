@@ -1,0 +1,27 @@
+.si-wrap h6{
+    padding-bottom: 5px;
+}
+
+.si-wrap ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+.si-wrap ul li.left{
+   width: 110px;
+   
+}
+.si-wrap ul li strong{
+   font-weight: normal;
+   font-size: 22px;
+}
+.si-wrap ul li.right{
+   width: calc(100% - 110px);
+   font-size: 12px;
+}
+.si-wrap ul li.right span.trend{
+   display: block;    
+   font-weight: bold;
+}

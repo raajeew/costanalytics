@@ -1,11 +1,11 @@
-# Cost Isights UI
+# Kubecost UI
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
 Node version : v12+
 
 ## Local setup
 Checkout the code 
-1. `cd costanalytics`
+1. `cd kubecost-ui`
 2. `npm install`
 3. `npm start`
 4. Development Server will be running on localhost:4200, open your browser on http://localhost:4200/

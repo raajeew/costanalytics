@@ -1,0 +1,71 @@
+table {
+  width: 100%;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+.grid-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+  width: 95%;
+  height: 120px;
+}
+
+.example-element-diagram {
+  min-width: 80px;
+  border: 2px solid black;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  height: 104px;
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description {
+  padding: 16px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+.mat-table {
+  transition: none !important;
+  box-shadow: none !important;
+}
+.trend{
+  margin-left: 10px;
+}
+.mat-column-cost {
+  width: 130px;
+}
+tr.mat-header-row{
+  height: 24px;
+}
+tr.grid-element-row.mat-footer-row, 
+tr.grid-element-row.mat-row,
+tr.grid-element-row.mat-header-row {
+    height: 40px;
+}
+app-cost-variation-details{display: block; width: 100%;}
+
+.cost-variations-row{
+  cursor: pointer;
+}
+.cost-variations-row > td:first-child{
+  background: url('../../../../assets/icons/arrow_forward.svg') no-repeat 0 center;;
+}
+
+.cost-variations-row.details-row-expanded > td:first-child{
+  background: url('../../../../assets/icons/arrow_up.svg') no-repeat 0 center;;
+}

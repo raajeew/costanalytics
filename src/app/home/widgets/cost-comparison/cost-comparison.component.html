@@ -1,0 +1,32 @@
+<div class="db-widget">
+    <div class="card-header" *ngIf="snapshot && snapshot.length>0">
+        <div class="col-left" *ngFor="let cost of snapshot">
+            <h6 class="title">{{cost.title}} <span class="date-range">({{cost.comment}})</span></h6>
+            <ul>
+                <li>
+                    <strong>${{cost.cost | number}}</strong>
+                </li>
+                <li>
+                    <span class="trend down">{{cost.deltaCost | percent}}</span>
+                    <label>{{cost.comment}}</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-content">
+        <div *ngIf="chartData" style="position: relative; height:250px; width:100%">
+            <canvas baseChart 
+                [datasets]="chartData"
+                [labels]="chartLabels"
+                [options]="chartOptions"
+                [legend]="chartLegend"
+                [colors]="chartColors"
+                [chartType]="chartType">
+            </canvas>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a class="link" (click)="navigate('provider')">Expolre Cost Insight</a>
+    </div>
+    <mat-spinner diameter='50' *ngIf="showLoading" class="loadingGif"></mat-spinner>
+</div>

@@ -1,0 +1,62 @@
+<div class="db-widget">
+    <div class="card-header">
+        <div class="col-left">
+            <h5 class="title">Cost By</h5>   
+            <span class="date-range">(Month to Date)</span>                     
+        </div>
+        <div class="col-right">
+            <select (change)="filterCard($event.target.value)">
+                <option *ngFor="let filter of filters" value={{filter}}>
+                    {{filter}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="card-content">
+        <ul class="pi-chart-wrap" *ngIf="chartData.length > 0">
+            <li>
+                <div class="gc-wrapper">
+                    <google-chart #chart  style="width: 100%;"
+                        [title]="title"
+                        [type]="type"
+                        [data]="chartData"
+                        [columnNames]="columnNames"
+                        [options]="options">
+                    </google-chart>
+                    <div id="labelOverlay">
+                        <p class="cost-title">Total Cost</p>
+                        <p class="total-cost">${{totalCost | number}}</p>
+                        <p class="time-period">(Till date this month)</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="chart-grid-table">
+                    <table mat-table [dataSource]="dataSource" matSort>
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="title">
+                        <th mat-header-cell *matHeaderCellDef>  </th>
+                        <td mat-cell *matCellDef="let element"> <em class="legendIcon" [style.background-color]="element.color">&nbsp;</em> {{element.title}} </td>
+                      </ng-container>
+                  
+                      <!-- Cost Column -->
+                      <ng-container matColumnDef="cost">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Current Cost </th>
+                        <td mat-cell *matCellDef="let element" class="cost-column"> 
+                            <span>${{element.cost | number}} &nbsp;</span>
+                            <span class="trend" [ngClass]="element.trend">{{element.variation}}%</span>
+                        </td>
+                      </ng-container>
+                  
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                  </div>
+            </li>
+        </ul>
+    </div>
+    <div class="card-footer">
+        <a class="link" (click)="navigate('optimize')">View Cost Insights</a>
+    </div>
+    <mat-spinner diameter='50' *ngIf="showLoading" class="loadingGif"></mat-spinner>
+</div>

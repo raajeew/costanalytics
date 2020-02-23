@@ -13,9 +13,13 @@ import { K8ClusterComponent } from './k8-cluster.component';
 import { ChartsModule } from 'ng2-charts';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
+import { TrendTemplateComponent } from './components/trend-template/trend-template.component';
+import { ComparisonTemplateComponent } from './components/comparison-template/comparison-template.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
-  declarations: [K8ClusterComponent],
+  declarations: [K8ClusterComponent, TrendTemplateComponent, ComparisonTemplateComponent],
   imports: [
     CommonModule,
     K8ClusterRoutingModule,
@@ -29,7 +33,10 @@ import {MatSortModule} from '@angular/material/sort';
     MomentModule,
     ChartsModule,
     MatTableModule,
-    MatSortModule
-  ]
+    MatSortModule,
+    MatProgressSpinnerModule,
+    MatMenuModule
+  ],
+  entryComponents: [TrendTemplateComponent, ComparisonTemplateComponent]
 })
 export class K8ClusterModule { }

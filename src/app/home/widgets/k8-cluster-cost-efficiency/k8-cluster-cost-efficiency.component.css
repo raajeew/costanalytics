@@ -1,0 +1,36 @@
+table {
+    width: 100%;
+}
+
+.mat-column-efficiency {
+    width: 120px;
+}
+.progress{
+    display: inline-block;
+    width: 50%;
+    margin-left: 20px;
+}
+.mat-progress-bar{
+    height: 10px;
+}
+::ng-deep .mat-progress-bar-fill::after {
+    background-color: #4389DB;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+    background: #DEDEDE;
+}
+
+.mat-table {
+    transition: none !important;
+    box-shadow: none !important;
+}
+.chart-grid-table tr.mat-footer-row, 
+.chart-grid-table tr.mat-row,
+.chart-grid-table tr.mat-header-row {
+    height: 40px;
+}
+.mat-spinner.loadingGif{position: absolute !important;}
+tr.mat-header-row{
+    height: 24px;
+  }

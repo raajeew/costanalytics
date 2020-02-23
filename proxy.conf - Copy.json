@@ -1,0 +1,18 @@
+{
+  "/mcapi": {
+    "target": "http://10.130.151.132:9898/mcapi",
+    "secure": false,
+    "pathRewrite": {
+      "^/mcapi": ""
+    },
+    "changeOrigin": false
+  },
+  "/api": {
+    "target": "http://10.130.151.132:9898/api",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": false
+  }
+}

@@ -1,1 +1,9 @@
-<h2>Dashboard</h2>
+<h2 class="title" style="margin-bottom: 10px;">Dashboard</h2>
+
+<div class="dashboard-wrap">
+    <ul class="db-widgets-wrap">
+        <li *ngFor="let card of availableWidgets" [ngClass]="card.class">          
+            <ng-container *ngComponentOutlet="card.component"></ng-container>            
+        </li>      
+    </ul>
+</div>
