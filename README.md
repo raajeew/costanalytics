@@ -14,6 +14,9 @@ Checkout the code
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Create feature module with routing
+`ng generate module xxxxx --route xxxxx --module app.module`
+
 ## Production build
 `ng build --prod --build-optimizer`
 
