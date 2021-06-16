@@ -89,7 +89,7 @@ div.md-drppicker{
 /*calendar style ends*/
 .navbar-brand{display: flex;}
 .navbar-brand span{font-weight: bold;border-left: 1px solid #eee; padding-left: 16px; font-size: 0.9rem; letter-spacing: .28px; line-height: 52px;}
-.navbar-brand strong{width: 88px; display: inline-block; overflow: hidden; }
+.navbar-brand strong{width: 220px; display: inline-block; overflow: hidden; }
 .navbar{box-sizing: border-box; padding: 0 15px ;}
 .navbar-wrap {display:flex; max-width: 100%;}
 .navbar-wrap .col-left{width:70%;height: 50px;box-sizing: border-box; display: flex;}
